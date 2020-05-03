@@ -10,9 +10,9 @@ async def remind(t,channel,message):
 @client.event
 async def on_error(event, *args, **kwargs):
     await client.get_channel(628771287501766657).send("Hey boss, I don't feel so good...")
-    await time.sleep(3)
+    await asyncio.sleep(1)
     await client.get_channel(628771287501766657).send(event)
-    await time.sleep(2)
+    await asyncio.sleep(0.5)
     await client.get_channel(628771287501766657).send(sys.exc_info())
 
 
