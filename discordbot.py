@@ -3,23 +3,25 @@ from cryptography.fernet import Fernet
 
 client = discord.Client()
 
+modlogs = 628771287501766657 # channel ID for mod-logs channel
+
 async def remind(t,channel,message):
     await asyncio.sleep(t)
     await channel.send("Remember, "+"'"+message+"'")
 
 @client.event
 async def on_error(event, *args, **kwargs):
-    await client.get_channel(628771287501766657).send("Hey boss, I don't feel so good...")
+    await client.get_channel(modlogs).send("Hey boss, I don't feel so good...")
     await asyncio.sleep(1)
-    await client.get_channel(628771287501766657).send(event)
+    await client.get_channel(modlogs).send(event)
     await asyncio.sleep(0.5)
-    await client.get_channel(628771287501766657).send(sys.exc_info())
+    await client.get_channel(modlogs).send(sys.exc_info())
 
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.get_channel(628771287501766657).send('Mav Jav Bot reporting for duty!')
+    await client.get_channel(modlogs).send(client.user.name +' reporting for duty!')
 
 @client.event
 async def on_message(message):
@@ -37,9 +39,9 @@ async def on_message(message):
         \$      # matches a literal '$' character
         timer   # matches the word 'timer'
         \s*     # matches zero or more whitespace characters
-        (\d+)   # capturing group 1: matches one or more digit characters
+        (\d+)   # capturing group 1: matches one or more digit characters (this will be the number of seconds)
         \s*     # matches zero or more whitespace characters
-        (.*)    # capturing group 2: matches zero or more of any character
+        (.*)    # capturing group 2: matches zero or more of any character (the message to repeat as reminder)
         """,re.VERBOSE)
         matches = re.match(pattern,message.content) # `matches[0]` is the entire string matching the pattern; `matches[1]` is the first capture group; `matches[2]` is the second capture group
         await message.channel.send("Sure. I'll remind you in "+matches[1]+" second"+('','s')[int(matches[1])>1]) # bot uses the correct plural or singular for time based on number of seconds specified
