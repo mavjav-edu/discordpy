@@ -10,7 +10,8 @@ To assemble and deploy this bot for your own server, clone the repository and ac
 
 1. Go to the [Discord developers' applications page](https://discord.com/developers/applications/)
 2. Create an application or click the application you created for this bot
-3. click ![Getting Discord Token](tokenDiscord.png)
+3. click ![Getting Discord Token]()
+<object data="tokenDiscord.png" type="image/png" alt="Copy the token from this menu" height="99px" align="left"><img src="tokenDiscord.png" alt="Copy the token from this menu" height="99px" align="left"></object>
 
 ### run the [writeToken.py](writeToken.py) script to create an encrypted token and local key, then
 
