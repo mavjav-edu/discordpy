@@ -6,7 +6,7 @@ Mav Jav Education bot
    
 [Mav Jav Education Discord server](https://discord.gg/KzzTBbr) bot. <img src="robot.png" alt="🤖" height="77vw" align="left">
 
-This project uses [Rapptz/discord.py](https://github.com/Rapptz/discord.py) to implement a [Discord](HTTPS://discord.gg) server bot. This bot is deployed on [Mav Jav Education Discord server](https://discord.gg/KzzTBbr). 
+This project uses [Rapptz/discord.py](https://github.com/Rapptz/discord.py) to implement a [Discord](HTTPS://discord.gg) server bot. This bot is meant to be used as an educational tool to teach Python programming to grade 7-12 students<sup id="a1">[1](#f1)</sup>. deployed on [Mav Jav Education Discord server](https://discord.gg/KzzTBbr). 
 
 ## Build 
 
@@ -22,3 +22,5 @@ To assemble and deploy this bot for your own server,
 ### run the [writeToken.py](writeToken.py) script to create an encrypted token and local key, then
 
 ### run the [discordbot](discordbot.py) on your sever or computer.
+
+<b id="f1">1</b> To use <a href="https://en.wikipedia.org/wiki/Discord">Discord™</a>, students must be <i>older</i> than the <u>age of digital consent</u>, which is 13 in Canada and USA.[↩](#a1)
