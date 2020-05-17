@@ -23,4 +23,4 @@ To assemble and deploy this bot for your own server,
 
 ### run the [discordbot](discordbot.py) on your sever or computer
 
-<b id="f1">1</b> To use <a href="https://en.wikipedia.org/wiki/Discord">Discord™</a>, students must be <i>older</i> than the <u>age of digital consent</u>, which is 13 in Canada and USA.[↩](#a1)
+<b id="f1">1</b> To use <a href="https://en.wikipedia.org/wiki/Discord">Discord™</a>, students must be  <i>equal in age to or older</i> than the <u>age of digital consent</u>, which is 13 in Canada and USA.[↩](#a1)
