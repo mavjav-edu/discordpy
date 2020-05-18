@@ -58,4 +58,14 @@ or
 
 That's it! The bot is now running on your server.
 
+## TODO
+
+This repository is a work-in-progress. I still need to add the following to the README.
+
+- [x] Explain prerequisites to start
+- [x] Instructions on how to deploy bot
+- [ ] Explain features of the bot
+- [ ] Explain how to add your own features
+- [ ] Multilingual translations
+
 <b id="f1">1</b> To use <a href="https://en.wikipedia.org/wiki/Discord">Discord</a>, students must be  <i>same age or older</i> than <u>the age of digital consent</u>, which is 13 in Canada and USA. If you are not thirteen years old (13) yet, please seek your guardian's or parents' assistance. Your guardian or parents can sign up for Discord and help you get your bot going.[↩](#a1)
