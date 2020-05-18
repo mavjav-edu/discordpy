@@ -7,13 +7,22 @@
 
 This project uses [Rapptz/discord.py](https://github.com/Rapptz/discord.py) to implement a [Discord](HTTPS://discord.gg) server bot. This bot is meant to be used as an educational tool to teach Python programming to kids🦸🏼‍♀️🦸🏼‍♂️🦸🏽‍♀️🦸🏽‍♂️ grades 7-12<sup id="a1">[1](#f1)</sup>. The bot is occassionally deployed on [Mav Jav Education Discord server](https://discord.gg/KzzTBbr) for testing.
 
+## Features
+
+1. Simple message-response
+
+   The [code](discordbot.py) includes templates for how to create commands that the bot recognizes and will respond to.
+
+2. A timer function to remind the chat of a message after a specified time. This is achieved using multithreaded function calls to enable asynchronous input/output, allowing our bot to do work in the background without freezing up (being unresponsive to further commands until it finishes the work).
+3. Subcommands. This allows for multiple variations on a central command (e.g., `!playMusic`, `!playSong`, `!playArtist`, `!playMovie`, `!playYouTube`, etc.)
+
 ## Build
 
 The purpose of this bot is to motivate kids to learn to code.
 
 My bot is not a "public bot", so it cannot be added by invitation within Discord. However, I hope kids will assemble and deploy this bot using their own computer to get an idea of how to create their own Python-powered bot on their Discord servers.
 
-To try this, you will need some set up.
+To try this, you will need some set up. Platform-specific instructions are given as links by major operating systems' icons: <a href=""><object data="https://raw.githubusercontent.com/mr-robot9/RovEverywhere/9a69cdddcbc50dae7014920a1f8ace9f6f399ed1/public/fontawesome-free-5.0.7/advanced-options/raw-svg/brands/windows.svg" type="image/svg+xml" alt="Windows 10 Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mr-robot9/RovEverywhere/9a69cdddcbc50dae7014920a1f8ace9f6f399ed1/public/fontawesome-free-5.0.7/advanced-options/raw-svg/brands/windows.svg" alt="Windows 10 Logo" height="12vh" align="initial"></object></a> for Windows, <a href=""><object data="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" type="image/svg+xml" alt="Linus logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" alt="Linux logo" height="12vh" align="initial"></object></a> for Linux, and <a href=""><object data="https://raw.githubusercontent.com/BrandonRush/infodump/34d1ff5d30b9f3a2ffb16f350e94d536315fd0a8/assets/os/macos.svg" type="image/svg+xml" alt="macOS Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/BrandonRush/infodump/34d1ff5d30b9f3a2ffb16f350e94d536315fd0a8/assets/os/macos.svg" alt="macOS Logo" height="12vh" align="initial"></object></a> for macOS. At any step you need to learn, please click the icon that matches your operating system.
 
 ### Prerequisites
 
@@ -35,15 +44,17 @@ To actually get this code running, follow these 10 steps:
 2. Enter the `discordpy` directory using a command shell (how <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location?view=powershell-7"><object data="https://raw.githubusercontent.com/mr-robot9/RovEverywhere/9a69cdddcbc50dae7014920a1f8ace9f6f399ed1/public/fontawesome-free-5.0.7/advanced-options/raw-svg/brands/windows.svg" type="image/svg+xml" alt="Windows 10 Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mr-robot9/RovEverywhere/9a69cdddcbc50dae7014920a1f8ace9f6f399ed1/public/fontawesome-free-5.0.7/advanced-options/raw-svg/brands/windows.svg" alt="Windows 10 Logo" height="12vh" align="initial"></object></a>, <a href="http://linuxcommand.org/lc3_lts0010.php"><object data="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" type="image/svg+xml" alt="Linus logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" alt="Linux logo" height="12vh" align="initial"></object></a>, <a href="https://macpaw.com/how-to/use-terminal-on-mac"><object data="https://raw.githubusercontent.com/BrandonRush/infodump/34d1ff5d30b9f3a2ffb16f350e94d536315fd0a8/assets/os/macos.svg" type="image/svg+xml" alt="macOS Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/BrandonRush/infodump/34d1ff5d30b9f3a2ffb16f350e94d536315fd0a8/assets/os/macos.svg" alt="macOS Logo" height="12vh" align="initial"></object></a>)
 3. Activate the Python virtual environment `discordpy`
    ([how macOS/Linux](https://youtu.be/Kg1Yvry_Ydk), [how Windows](https://youtu.be/APOPm01BVrk)),
-   
 
 ```powershell
 .\discordpy\Scripts\activate.bat
 ```
+
 or
+
 ```bash
 ./discordpy/Scripts/activate
 ```
+
 4. Get a token from Discord
    1. Go to the [Discord developers' applications page](https://discord.com/developers/applications/)
    2. Create an application or click the application you created for this bot
@@ -53,7 +64,7 @@ or
 6. Go to the OAuth2 tab ![OAuth2 tab](oauthTab.svg)
 7. Check the box for `bot` role ![check the box for the bot role](botRole.svg)
 8. Check boxes for the permissions `Send Messages` and `Read Message History` ![Generate invitation URL](urlInvite.svg)
-9. Invite your bot to join your server ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear in your server until the last step, [10](#10))
+9. Invite your bot to join your server by copying the URL generated by the permissions calculating tool. The URL will have the format `https://discord.com/api/oauth2/authorize?client_id=`{CLIENT_ID}`&permissions=`{PERMISSIONS_NUMBER}`&scope=bot` ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear in your server until the last step, [10](#10))
 10. Run the [discordbot](discordbot.py) on your computer inside VS Code
 
 That's it! The bot is now running on your server.
@@ -64,7 +75,7 @@ This repository is a work-in-progress. I still need to add the following to the 
 
 - [x] Explain prerequisites to start
 - [x] Instructions on how to deploy bot
-- [ ] Explain features of the bot
+- [x] Explain features of the bot
 - [ ] Explain how to add your own features
 - [ ] Explain remote `server`, local `computer`, multithreading, asynchronous
 - [ ] Security principles motivating encryption, least privilege
