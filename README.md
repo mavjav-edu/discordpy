@@ -53,7 +53,7 @@ or
 6. Go to the OAuth2 tab ![OAuth2 tab](oauthTab.svg)
 7. Check the box for `bot` role ![check the box for the bot role](botRole.svg)
 8. Check boxes for the permissions `Send Messages` and `Read Message History` ![Generate invitation URL](urlInvite.svg)
-9. Invite your bot to join your server ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear until the last step, [10](#10)
+9. Invite your bot to join your server ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear in your server until the last step, [10](#10))
 10. Run the [discordbot](discordbot.py) on your computer inside VS Code
 
 That's it! The bot is now running on your server.
@@ -66,6 +66,7 @@ This repository is a work-in-progress. I still need to add the following to the 
 - [x] Instructions on how to deploy bot
 - [ ] Explain features of the bot
 - [ ] Explain how to add your own features
+- [ ] Explain remote `server`, local `computer`, multithreading, asynchronous
 - [ ] Security principles motivating encryption, least privilege
 - [ ] SVG recording of `bash` and `PowerShell` demonstrating each step
 - [ ] Multilingual translations
