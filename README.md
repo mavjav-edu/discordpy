@@ -49,12 +49,12 @@ or
    2. Create an application or click the application you created for this bot
    3. Click the 'Bot' tab with puzzle piece <object data="https://raw.githubusercontent.com/mavaddat-javid-education/discordpy/master/bot.svg" type="image/svg+xml" alt="'Bot' tab on Discord developer's application" height="20vh" align="initial"><img src="/bot.svg" alt="Bot' tab on Discord developer's application" height="20vh" align="initial"></object></a> icon ![Bot tab](botTab.svg)
    4. Click 'Copy' under 'TOKEN' ![Copy the token](copyToken.svg)
-   5. Create your Fernet `token` and `key` by pasting the auth token into Python shell running [writeToken.py](writeToken.py) script
-   6. Go to the OAuth2 tab ![OAuth2 tab](oauthTab.svg)
-   7. Check the box for `bot` role ![check the box for the bot role](botRole.svg)
-   8. Check boxes for the permissions `Send Messages` and `Read Message History` ![Generate invitation URL](urlInvite.svg)
-   9. Invite your bot to join your server ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear until the last step, [10](#10)
-   10. Run the [discordbot](discordbot.py) on your computer inside VS Code
+5. Create your Fernet `token` and `key` by pasting the auth token into Python shell running [writeToken.py](writeToken.py) script
+6. Go to the OAuth2 tab ![OAuth2 tab](oauthTab.svg)
+7. Check the box for `bot` role ![check the box for the bot role](botRole.svg)
+8. Check boxes for the permissions `Send Messages` and `Read Message History` ![Generate invitation URL](urlInvite.svg)
+9. Invite your bot to join your server ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear until the last step, [10](#10)
+10. Run the [discordbot](discordbot.py) on your computer inside VS Code
 
 That's it! The bot is now running on your server.
 
