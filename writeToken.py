@@ -22,9 +22,9 @@ try: # try-catch block for error `IOError`
         gitignoref = open(".gitignore",'a') # opens `.gitignore` append mode (write starting at the end of the file)
         keyRE = re.compile("key",re.MULTILINE) # regular expression pattern matching the word 'key' anywhere
         tokenRE = re.compile(tokenFilename,re.MULTILINE) # regular expression pattern matching the word 'token' anywhere
-        if(None == re.search(keyRE,gitignore)): # if the word 'key' is not found in the content of `.gitignore`
+        if(re.search(keyRE,gitignore) == None): # if the word 'key' is not found in the content of `.gitignore`
             gitignoref.write("\nkey") # then add 'key' to the next line in `.gitignore`
-        if(None == re.search(tokenRE,gitignore)): # if the word 'token' is not found in the content of `.gitignore`
+        if(re.search(tokenRE,gitignore) == None): # if the word 'token' is not found in the content of `.gitignore`
             gitignoref.write("\n"+tokenFilename) # then add 'key' to the next line in `.gitignore`
     except IOError as error: # catches `IOError` from trying to open `.gitignore`
         pass
