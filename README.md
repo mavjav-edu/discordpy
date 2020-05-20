@@ -81,6 +81,35 @@ This repository is a work-in-progress. I still need to add the following to the 
 - [ ] Explain remote `server`, local `computer`, multithreading, asynchronous
 - [ ] Security principles motivating encryption, least privilege
 - [ ] SVG recording of `bash` and `PowerShell` demonstrating each step
+- [ ] Add functionality of Discord.py
+   - [ ] Connect to MySQL db 
+   - [ ] Welcome message 
+   - [ ] Moderation
+   - [ ] Auto role
+   - [ ] Twitch, YouTube, Reddit, Mixer alerts
+   - [ ] Pokémon catching 
+   - [ ] Accept donations
+   - [ ] Meme maker
+   - [ ] Mini games
+      - [ ] Trivia games
+         - [ ] Music trivia
+         - [ ] Gaming trivia
+   - [ ] Member levels and XP
+   - [ ] Role rewards
+   - [ ] Play music/videos
+      - [ ] YouTube • Tracks, Playlists, Searches, Links, Streams
+      - [ ] SoundCloud • Tracks, Playlists, Searches, Links
+      - [ ] Spotify • Links to tracks, Playlists
+      - [ ] Twitch • Links to streams
+      - [ ] Mixer • Links to streams
+      - [ ] BandCamp • Links to tracks and albums
+   - [ ] Pull stats from https://tracker.gg/
+      - [ ] Apex Legends
+      - [ ] CSGO
+      - [ ] Division 2
+      - [ ] Overwatch
+      - [ ] Splitgate
+      - [ ] Fortnite Power Rankings
 - [ ] Multilingual translations
 
 [<b id="f1">1</b>](#a1) To use <a href="https://en.wikipedia.org/wiki/Discord">Discord</a>, students must be  <i>same age or older</i> than <u>the age of digital consent</u>, which is 13 in Canada and USA. If you are not thirteen years old (13) yet, please seek your guardian's or parents' assistance. Your guardian or parents can sign up for Discord and help you get your bot going.[↩](#a1)
