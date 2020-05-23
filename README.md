@@ -98,12 +98,12 @@ This repository is a work-in-progress. I still need to add the following to the 
   - [ ] Member levels and XP
   - [ ] Role rewards
   - [ ] Play music/videos
-    -[ ] YouTube • Tracks, Playlists, Searches, Links, Streams
-    -[ ] SoundCloud • Tracks, Playlists, Searches, Links
-    -[ ] Spotify • Links to tracks, Playlists
-    -[ ] Twitch • Links to streams
-    -[ ] Mixer • Links to streams
-    -[ ] BandCamp • Links to tracks and albums
+    - YouTube • Tracks, Playlists, Searches, Links, Streams
+    - SoundCloud • Tracks, Playlists, Searches, Links
+    - Spotify • Links to tracks, Playlists
+    - Twitch • Links to streams
+    - Mixer • Links to streams
+    - BandCamp • Links to tracks and albums
   - [ ] Pull stats from https://tracker.gg/
     - Apex Legends
     - CSGO
