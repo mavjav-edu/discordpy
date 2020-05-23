@@ -92,9 +92,9 @@ This repository is a work-in-progress. I still need to add the following to the 
   - [ ] Accept donations
   - [ ] Meme maker
   - [ ] Mini games
-    -[ ] Trivia games
-       -[ ] Music trivia
-       -[ ] Gaming trivia
+    - Trivia games
+       - Music trivia
+       - Gaming trivia
   - [ ] Member levels and XP
   - [ ] Role rewards
   - [ ] Play music/videos
@@ -105,12 +105,12 @@ This repository is a work-in-progress. I still need to add the following to the 
     -[ ] Mixer • Links to streams
     -[ ] BandCamp • Links to tracks and albums
   - [ ] Pull stats from https://tracker.gg/
-    -[ ] Apex Legends
-    -[ ] CSGO
-    -[ ] Division 2
-    -[ ] Overwatch
-    -[ ] Splitgate
-    -[ ] Fortnite Power Rankings
+    - Apex Legends
+    - CSGO
+    - Division 2
+    - Overwatch
+    - Splitgate
+    - Fortnite Power Rankings
 - [ ] Multilingual translations
 
 [<b id="f1">1</b>](#a1) To use [Discord](https://en.wikipedia.org/wiki/Discord), students must be *same age or older than* the age of digital consent, which is 13 in Canada and USA. If you are not thirteen years old (13) yet, please seek your guardian's or parents' assistance. Your guardian or parents can sign up for Discord and help you get your bot going.[↩](#a1)
