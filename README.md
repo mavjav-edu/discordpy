@@ -2,9 +2,9 @@
 
 <a href="https://discord.gg/KzzTBbr" alt="Discord server invite">![Discord server invite](https://discordapp.com/api/guilds/336642139381301249/embed.png)</a>
 <a href="https://pypi.python.org/pypi/discord.py"><object data="https://img.shields.io/pypi/v/discord.py.svg" type="image/svg+xml" alt="PyPI version info" height="20vh" align="initial"><img src="https://img.shields.io/pypi/v/discord.py.svg" alt="PyPI version info" height="20vh" align="initial"></object></a>
-   
+   [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/javid@mavaddat.ca)
+
 [Mav Jav Education Discord server](https://discord.gg/KzzTBbr) bot. <img src="robot.png" alt="🤖" height="77vw" align="left">
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/javid@mavaddat.ca)
 
 This project uses [Rapptz/discord.py](https://github.com/Rapptz/discord.py) to implement a [Discord](HTTPS://discord.gg) server bot. This bot is meant to be used as an educational tool to teach Python programming to kids🦸🏼‍♀️🦸🏼‍♂️🦸🏽‍♀️🦸🏽‍♂️ grades 7-12<sup id="a1">[1](#f1)</sup>. The bot is occassionally deployed on [Mav Jav Education Discord server](https://discord.gg/KzzTBbr) for testing.
 
@@ -92,25 +92,25 @@ This repository is a work-in-progress. I still need to add the following to the 
   - [ ] Accept donations
   - [ ] Meme maker
   - [ ] Mini games
-    -[ ] Trivia games
-       -[ ] Music trivia
-       -[ ] Gaming trivia
+    - Trivia games
+       - Music trivia
+       - Gaming trivia
   - [ ] Member levels and XP
   - [ ] Role rewards
   - [ ] Play music/videos
-    -[ ] YouTube • Tracks, Playlists, Searches, Links, Streams
-    -[ ] SoundCloud • Tracks, Playlists, Searches, Links
-    -[ ] Spotify • Links to tracks, Playlists
-    -[ ] Twitch • Links to streams
-    -[ ] Mixer • Links to streams
-    -[ ] BandCamp • Links to tracks and albums
+    - YouTube • Tracks, Playlists, Searches, Links, Streams
+    - SoundCloud • Tracks, Playlists, Searches, Links
+    - Spotify • Links to tracks, Playlists
+    - Twitch • Links to streams
+    - Mixer • Links to streams
+    - BandCamp • Links to tracks and albums
   - [ ] Pull stats from https://tracker.gg/
-    -[ ] Apex Legends
-    -[ ] CSGO
-    -[ ] Division 2
-    -[ ] Overwatch
-    -[ ] Splitgate
-    -[ ] Fortnite Power Rankings
+    - Apex Legends
+    - CSGO
+    - Division 2
+    - Overwatch
+    - Splitgate
+    - Fortnite Power Rankings
 - [ ] Multilingual translations
 
 [<b id="f1">1</b>](#a1) To use [Discord](https://en.wikipedia.org/wiki/Discord), students must be *same age or older than* the age of digital consent, which is 13 in Canada and USA. If you are not thirteen years old (13) yet, please seek your guardian's or parents' assistance. Your guardian or parents can sign up for Discord and help you get your bot going.[↩](#a1)
