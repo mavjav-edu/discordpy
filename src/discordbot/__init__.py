@@ -1,11 +1,40 @@
 def main():
-    import discord, re, threading, time, asyncio
+    import discord, re, threading, time, asyncio, json, keyring
     from cryptography.fernet import Fernet # required for decrypting our `token` and `key`
-
-    client = discord.Client() # This is the discord.py Client object we will use to call the Discord API
+    from discord.ext import commands
+    bot = commands.Bot(command_prefix='>') # This is the discord.py Bot object we will use to call the Discord API
 
     modlogs = 628771287501766657 # The channel ID on my server for the mod-logs channel (I created this admin-only channel on my server; you should do the same for yours and you'll have a different channel ID. Find out more here: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
+    durations = { # en-US time to corresponding seconds per unit time
+        "seconds":(1,"second"),
+        "sec":(1,"second"),
+        "s":(1,"second"),
+        "minute":(60,"minute"),
+        "min": (60,"minute"),
+        "m": (60,"minute"),
+        "hour": ((60*60),"hour"),
+        "hr": ((60*60),"hour"),
+        "h": ((60*60),"hour"),
+        "day": ((60*60*24),"day"),
+        "d": ((60*60*24),"day"),
+        "week": ((60*60*24*7),"week"),
+        "wk": ((60*60*24*7),"week")
+    }
 
+    @bot.command()
+    async def remind(ctx, *, args):
+        pattern = re.compile("""
+            \s*     # matches zero or more whitespace characters; In case the user put spaces (or none) after the `!timer` keyword
+            (\d+)   # capturing group 1: matches one or more digit characters (this will be the number of seconds); We will interpret this as the number of seconds the user wants our bot to wait before reminding the channel
+            (?:(seconds|sec|s|minute|min|m|hour|hr|h|day|d|week)s?) # duration specifier
+            \s*     # matches zero or more whitespace characters; In case the user put spaces (or none) after the number of seconds
+            (.*)    # capturing group 2: matches zero or more of any character (the message to repeat as reminder); We will interpret any characters after the seconds as the message that the user wants echoed into the channel
+            """,re.VERBOSE)
+        matches = re.match(pattern,message.content) # `matches[0]` is the entire string matching the pattern; `matches[1]` is the first capture group; `matches[2]` is the second capture group
+        await ctx.send("Sure. I'll remind you in "+matches[1]+" second"+('','s')[int(matches[1])>1]) # bot uses the correct plural or singular for time based on number of seconds specified
+        asyncio.ensure_future(remind(int(matches[1]),message.channel,matches[2])) # multithreaded function calls
+
+    
     async def remind(t,channel,message): # A simple reminder function that reminds a `channel` of a `message` after `t` seconds; this is a helper method to start a separate thread for enabling the bot's execution of parallel commands (without freezing between commands)
         await asyncio.sleep(t) # the helper thread goes to sleep for `t` seconds
         await channel.send("Remember, "+"'"+message+"'") # when the thread awakes, it will send a `message` to the `channel` worded as a reminder
@@ -36,17 +65,7 @@ def main():
             await message.channel.send("I'm going...") # By departing
             await client.logout() # And logging out (our bot script will also terminate)
         elif message.content.lower().startswith('!remind'): # This is an example of how to write a command that requires background processing; we will set an alarm to remind a channel of a certain message
-            pattern = re.compile("""
-            \$      # matches a literal '$' character; This is a character we chose to distinguish the command is intended for the bot.
-            timer   # matches the word 'timer'; This is how we know the timer function was engaged
-            \s*     # matches zero or more whitespace characters; In case the user put spaces (or none) after the `!timer` keyword
-            (\d+)   # capturing group 1: matches one or more digit characters (this will be the number of seconds); We will interpret this as the number of seconds the user wants our bot to wait before reminding the channel
-            \s*     # matches zero or more whitespace characters; In case the user put spaces (or none) after the number of seconds
-            (.*)    # capturing group 2: matches zero or more of any character (the message to repeat as reminder); We will interpret any characters after the seconds as the message that the user wants echoed into the channel
-            """,re.VERBOSE)
-            matches = re.match(pattern,message.content) # `matches[0]` is the entire string matching the pattern; `matches[1]` is the first capture group; `matches[2]` is the second capture group
-            await message.channel.send("Sure. I'll remind you in "+matches[1]+" second"+('','s')[int(matches[1])>1]) # bot uses the correct plural or singular for time based on number of seconds specified
-            asyncio.ensure_future(remind(int(matches[1]),message.channel,matches[2])) # multithreaded function calls
+            
 
         elif message.content.lower().startswith('!play'): # Here is one way of making a command with multiple subvariations
             if(message.content[5:].lower().startswith('music')):
@@ -58,4 +77,4 @@ def main():
     key=open("key",'rb') # load the `key` file
     fernet=Fernet(key.read()) # read the key into the Fernet cryptography object
     token=open("token",'rb') # load the encrypted `token` file
-    client.run((fernet.decrypt(token.read())).decode()) # read the encrypted contents of the `token` file as binary, convert them into encrypted UTF8 text, decrypt the UTF8 text to retrieve the original Discord bot auth token
+    bot.run((fernet.decrypt(token.read())).decode()) # read the encrypted contents of the `token` file as binary, convert them into encrypted UTF8 text, decrypt the UTF8 text to retrieve the original Discord bot auth token
