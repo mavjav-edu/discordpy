@@ -83,18 +83,21 @@ This repository is a work-in-progress. I still need to add the following to the 
 - [ ] Security principles motivating encryption, least privilege
 - [ ] SVG recording of `bash` and `PowerShell` demonstrating each step
 - [ ] Add functionality of Discord.py
-  - [ ] Connect to MySQL db 
-  - [ ] Welcome message 
+  - [ ] Connect to MySQL db
+  - [ ] Welcome message
   - [ ] Moderation
   - [ ] Auto role
   - [ ] Twitch, YouTube, Reddit, Mixer alerts
-  - [ ] Pokémon catching 
+  - [ ] Pokémon catching
   - [ ] Accept donations
   - [ ] Meme maker
   - [ ] Mini games
-    - Trivia games
-       - Music trivia
-       - Gaming trivia
+    - Quiz games
+      - Music trivia
+      - Gaming trivia
+      - Tidbits knowledge test
+        - Asks channel a small question about topic
+        - Keeps track of points
   - [ ] Member levels and XP
   - [ ] Role rewards
   - [ ] Play music/videos
