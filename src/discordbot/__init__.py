@@ -68,11 +68,11 @@ def main():
 
     @bot.command()
     async def hello(ctx):
-        await ctx.channel.send('Hello!') # Tell user hello
+        await ctx.send('Hello!') # Tell user hello
     
     @bot.command()
     async def goaway(ctx):
-        await ctx.channel.send("I'm going...")
+        await ctx.send("I'm going...")
         await bot.logout() # Bot logs out
 
     #TODO: 
