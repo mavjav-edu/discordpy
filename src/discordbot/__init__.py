@@ -13,7 +13,7 @@ def main():
 
     @bot.command()
     async def remind(ctx, *, args):
-        durationalias = { # natural lang time word to corresponding seconds
+        durationalias = { # natural lang time to corresponding seconds
             "second":1,
             "sec":1,
             "s":1,
