@@ -34,7 +34,7 @@ To try this, you will need some set up. If necessary, platform-specific instruct
 - [<img src="https://raw.githubusercontent.com/codedailyio/images/3239244f07f21718f16dcb10bda806d4d70d7a41/icons/vscode.svg" alt="VS Code Logo" height="12vh" align="initial"/> install VS Code](https://code.visualstudio.com
 ),
 - [<img src="https://raw.githubusercontent.com/codedailyio/images/3239244f07f21718f16dcb10bda806d4d70d7a41/icons/git.svg" alt="Git Logo" height="12vh" align="initial"/> Git](https://marketplace.visualstudio.com/items?itemName=donjayamanne.git-extension-pack),
-- [<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="12vh" align="initial"/> Python](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack),
+- [<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="12vh" align="initial"/> Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python),
 - <img src="encryption.svg" alt="Encryption icon" height="12vh" align="initial"/> Fernet [cryptography](https://pypi.org/project/cryptography/) module
 
 ### Run ▶
