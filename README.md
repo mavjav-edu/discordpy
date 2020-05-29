@@ -53,7 +53,7 @@ To actually get this code running, follow these 10 steps:
 or
 
 ```powershell
-.\discordpy/Scripts/Activate.ps1
+.\discordpy\Scripts\Activate.ps1
 ```
 
 or
