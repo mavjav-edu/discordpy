@@ -1,5 +1,5 @@
 def main():
-    import discord, re, threading, time, asyncio, json, keyring, sys
+    import re, threading, time, asyncio, json, keyring, sys
     from cryptography.fernet import Fernet # required for decrypting our `token` and `key`
     from discord.ext import commands
     
@@ -7,9 +7,10 @@ def main():
     bot = commands.Bot(command_prefix='!') # `bot` is the discord.py `commands.Bot` object we will use to call the Discord API
 
     modlogs = 628771287501766657 # The channel ID on my server for the mod-logs channel
-    # (I created this admin-only channel on my server; you should do the same for yours
-    # and you'll have a different channel ID. Find out more here: 
-    # https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-)
+    # It is an admin-only channel on my server where I want the bot to dump its errors
+    # You can create one for your server too but, you'll have a different channel ID (of course).
+    # Find out more here: 
+    # https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
 
     @bot.command()
     async def remind(ctx, *, args):
@@ -43,7 +44,7 @@ def main():
             (.*)    # capturing group 3: matches zero or more of any character (the message to repeat as reminder); We will interpret any characters after the duration specifier as the message that the user wants echoed into the channel
             """,re.VERBOSE)
         matches = re.match(pattern,args) # `matches[0]` is the entire string matching the pattern; `matches[1]` is the first capture group; `matches[2]` is the second capture group
-        await ctx.send("Sure. I'll remind you in "+matches[1]+" "+str(durationdict[durationalias[matches[2]]])+('','s')[int(matches[1])>1]) # bot uses the correct plural or singular for time based on number of seconds specified
+        await ctx.send("Sure. I'll remind you in "+matches[1]+" "+str(durationdict[durationalias[matches[2]]])+('','s')[int(matches[1])>1]) # bot uses the correct plural (when time is more or less than one unit) or singular (when time is exactly one unit) for time based on number of units-time specified
         asyncio.ensure_future(setreminder(int((matches[1])*durationalias[matches[2]]),ctx.channel,matches[3])) # multithreaded function calls
 
     async def setreminder(t,channel,message): # A simple reminder function that reminds a `channel` of a `message` after `t` seconds; this is a helper method to start a separate thread for enabling the bot's execution of parallel commands (without freezing between commands)
