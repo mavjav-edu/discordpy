@@ -39,7 +39,9 @@ def main():
         pattern = re.compile("""
             \s*     # matches zero or more whitespace characters; In case the user put spaces (or none) after the `timer` keyword
             (\d+)   # capturing group 1: matches one or more digit characters (this will be the number of seconds per duration specifier); We will interpret this as the number of seconds the user wants our bot to wait before reminding the channel
-            (?:(""" + ('|'.join(durationalias.keys())) + """)s?) # capturing group 2: duration specifier
+            (?:     # start non-capturing group: matches a 'durationalias' key followed by an optional 's' as indicating plural
+                (""" + ('|'.join(durationalias.keys())) + """)  # capturing group 2: duration specifier
+            s?)     # end non-capturing group: matches a 'durationalias' key followed by an optional 's' as indicating plural
             \s*     # matches zero or more whitespace characters; In case the user put spaces (or none) after the number of duration specifier
             (.*)    # capturing group 3: matches zero or more of any character (the message to repeat as reminder); We will interpret any characters after the duration specifier as the message that the user wants echoed into the channel
             """,re.VERBOSE)
