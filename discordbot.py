@@ -1,3 +1,7 @@
+import re, threading, time, asyncio, json, keyring, sys
+from cryptography.fernet import Fernet # required for decrypting our `token` and `key`
+from discord.ext import commands
+
 def main():
     # Below, we choose the exclam (!) to signify commands to the bot; we could have chosen any character (or none at all, but then the bot might chat when people say things to humans) 
     bot = commands.Bot(command_prefix='!') # `bot` is the discord.py `commands.Bot` object we will use to call the Discord API
