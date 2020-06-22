@@ -1,6 +1,6 @@
 <#
 .Synopsis
-Activate a Python virtual environment for the current Powershell session.
+Activate a Python virtual environment for the current PowerShell session.
 
 .Description
 Pushes the python executable for a virtual environment to the front of the
@@ -37,6 +37,15 @@ Activates the Python virtual environment that contains the Activate.ps1 script,
 and prefixes the current prompt with the specified string (surrounded in
 parentheses) while the virtual environment is active.
 
+.Notes
+On Windows, it may be required to enable this Activate.ps1 script by setting the
+execution policy for the user. You can do this by issuing the following PowerShell
+command:
+
+PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+For more information on Execution Policies: 
+https://go.microsoft.com/fwlink/?LinkID=135170
 
 #>
 Param(
@@ -137,7 +146,7 @@ function Get-PyVenvConfig(
                 $val = $keyval[1]
 
                 # Remove extraneous quotations around a string value.
-                if ("'""".Contains($val.Substring(0,1))) {
+                if ("'""".Contains($val.Substring(0, 1))) {
                     $val = $val.Substring(1, $val.Length - 2)
                 }
 
@@ -165,7 +174,8 @@ Write-Verbose "VenvExecDir Name: '$($VenvExecDir.Name)"
 # VenvExecDir if specified on the command line.
 if ($VenvDir) {
     Write-Verbose "VenvDir given as parameter, using '$VenvDir' to determine values"
-} else {
+}
+else {
     Write-Verbose "VenvDir not given as a parameter, using parent directory name as VenvDir."
     $VenvDir = $VenvExecDir.Parent.FullName.TrimEnd("\\/")
     Write-Verbose "VenvDir=$VenvDir"
@@ -179,7 +189,8 @@ $pyvenvCfg = Get-PyVenvConfig -ConfigDir $VenvDir
 # just use the name of the virtual environment folder.
 if ($Prompt) {
     Write-Verbose "Prompt specified as argument, using '$Prompt'"
-} else {
+}
+else {
     Write-Verbose "Prompt not specified as argument to script, checking pyvenv.cfg value"
     if ($pyvenvCfg -and $pyvenvCfg['prompt']) {
         Write-Verbose "  Setting based on value in pyvenv.cfg='$($pyvenvCfg['prompt'])'"
@@ -232,8 +243,8 @@ $Env:PATH = "$VenvExecDir$([System.IO.Path]::PathSeparator)$Env:PATH"
 # SIG # Begin signature block
 # MIIaWgYJKoZIhvcNAQcCoIIaSzCCGkcCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCD+OCVx/PDssJke
-# lhLLB+DoYOXVGOQfEDGSHpBCLzyqjKCCFBgwggPuMIIDV6ADAgECAhB+k+v7fMZO
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAwnDYwEHaCQq0n
+# 8NAvsN7H7BO7/48rXCNwrg891FS5vaCCFBgwggPuMIIDV6ADAgECAhB+k+v7fMZO
 # WepLmnfUBvw7MA0GCSqGSIb3DQEBBQUAMIGLMQswCQYDVQQGEwJaQTEVMBMGA1UE
 # CBMMV2VzdGVybiBDYXBlMRQwEgYDVQQHEwtEdXJiYW52aWxsZTEPMA0GA1UEChMG
 # VGhhd3RlMR0wGwYDVQQLExRUaGF3dGUgQ2VydGlmaWNhdGlvbjEfMB0GA1UEAxMW
@@ -345,30 +356,30 @@ $Env:PATH = "$VenvExecDir$([System.IO.Path]::PathSeparator)$Env:PATH"
 # EHd3dy5kaWdpY2VydC5jb20xMTAvBgNVBAMTKERpZ2lDZXJ0IFNIQTIgQXNzdXJl
 # ZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAM+1e2gZdG4yR38+Spsm9gwDQYJYIZIAWUD
 # BAIBBQCggdQwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwHAYKKwYBBAGCNwIB
-# CzEOMAwGCisGAQQBgjcCARUwLwYJKoZIhvcNAQkEMSIEIKwuMOP9xUoz8IY/qorw
-# oGtxknrVrNkjKQ2ycWeqndzkMGgGCisGAQQBgjcCAQwxWjBYoFaAVABCAHUAaQBs
+# CzEOMAwGCisGAQQBgjcCARUwLwYJKoZIhvcNAQkEMSIEIAa54uJnEb+7DCR7MaUT
+# o0aKTs9sLkFayZ5/pQ+1+8voMGgGCisGAQQBgjcCAQwxWjBYoFaAVABCAHUAaQBs
 # AHQAOgAgAFIAZQBsAGUAYQBzAGUAXwBtAGEAcwB0AGUAcgBfAHYAMwAuADkALgAw
-# AGEANABfADIAMAAyADAAMAAyADIANQAuADAAMTANBgkqhkiG9w0BAQEFAASCAgCP
-# KX6OPITVXOrlaWcyWNNI7yiFHKQ777CCI+he9yoWCRt+K2gOM26two6zdX95j6WN
-# pCtdHeZKQb6FITl7PW2SZILRSrM+waGjAnAs7sqjvjFCG5bHzoAptxwMwpzU6KGS
-# /1VoEXIihDQej5JvKdyoZqI1E1nKaWpNGtXBFEz5/WbxOHBWzRoVuGmmCCCPb2VY
-# XnR8X2Zeclh1IwY4TJO/DlthYJaT2wxxg89ksDfwNLJKdIudav4YRzxFLFaHeLWS
-# C3Pk1rsTQQ4ZjGtS0Ep9nJR/VplQbhjeGxT9yz1FqRN75+zmfQG4AdYGVCeIFOT2
-# PBPbT9SbFGwLUGOeW5q8xCNgTyzD1u+4nKLo6Etc15mjGTJTSSPcgW3Ea8yqwg8g
-# sniZXnGWGNM+M3shvElmFjE8tdpzPZGSWoHCLm4fQvhXj6hzEoItYLughPyEwaya
-# yP+zbqFLE5Xx02stmS+dAchjcxcl6IhsPmoQRett9so0vh2FqX37hTtODw5+yIxi
-# Wqrau+pVNBuXzBMvyGEF87amzMmMisdgSRgq5hrKQGFJqg3kNbmqzJNnBUIik7c0
-# FHaE8mammEzYqlGxMucb4fkchUcSUyAR8tO2pXEMaQNgSeKwOVv9DtnU2NVnHssQ
-# ZmtKzYSDykEVkmMjb/aDj++2GoLrvAk7GZJgqDnF9qGCAgswggIHBgkqhkiG9w0B
+# AGIAMwBfADIAMAAyADAAMAA2ADAAOQAuADAAMTANBgkqhkiG9w0BAQEFAASCAgAX
+# edaBTGWX0N9Izw8LlizbiO7biMpSfDG+XVxni3amW1CRrDqOvWV1dLIjmb/mwMFI
+# lyjsA8u0wSvy6bw5wQJcvISiHdudZrWwWHYwvwca5hMihY7T7qKc2g7KWvTwbNi7
+# iDbCR6JUij2urJ8+vcBNdvcunKtvtBtc/8eoZXQPeuW9aoaWMNvlXg7rczTXjgtb
+# cX6jwjLpKf9slmuDsS/hop3txKHC14P8CYpgiSwdFSUsHRTWm61axqODeG831qWh
+# QETbjmICBN1YPsapsVCAx5CfeOl6OZTBepZ+VKcknndubBRf49N8SY8BbIg3Ro5O
+# IvVX0FW5rMZOtCilxOkdwHvLnRiyOk/p1BSI0fhZx6HJXKvuVrbGyq+L8nvrGgiK
+# WPpVkWjT/xe1K3KKEu4Saag7S6VFQ4aVA6whXkligGgQcDdIn5WiKqCq2ihNkEWq
+# Lk3+A0AuG/i0xKlis141+TJJu3IGXT+yQFzgqzKqqRAaFYhvqymMM0WdiyoLtk4m
+# 8v1fCux9p1m7SEKNLGHQcmNNvjn+5rXZFHgEaBR5agHiC2mKRmFvtfkCSQWKMcqk
+# xHFpGQVoZeoh/5zBdhGx5/OMM8Kz7GBpuyqmlDf9meHAeJjk4fxg7HJCag1dB2KM
+# 4imhV1z3ATp2NjOMKcV4DbB84ogT5f9jPYU1wOv90qGCAgswggIHBgkqhkiG9w0B
 # CQYxggH4MIIB9AIBATByMF4xCzAJBgNVBAYTAlVTMR0wGwYDVQQKExRTeW1hbnRl
 # YyBDb3Jwb3JhdGlvbjEwMC4GA1UEAxMnU3ltYW50ZWMgVGltZSBTdGFtcGluZyBT
 # ZXJ2aWNlcyBDQSAtIEcyAhAOz/Q4yP6/NW4E2GqYGxpQMAkGBSsOAwIaBQCgXTAY
-# BgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMDAyMjUy
-# MzI4NTNaMCMGCSqGSIb3DQEJBDEWBBQoO/FAe70MtzoaqFZq+brIuixXPDANBgkq
-# hkiG9w0BAQEFAASCAQA9RmOTPkwAWovqW17ZGax964XwbfOlFk3Ywuw0caIJndOv
-# BFbIn7TlI4Q1/+m/Dt7C8dTqncj6GlNEWWGqWyOPiQom/UK60T9X5bGjrg02pX0x
-# L+0iG64Xw4HFRJb/Qzly1LHxao4FybxnY9EEE/OBgfWVeJZH9CKixWrWPw/UufJK
-# XpuZ4frSYqbNbgqVnWJ9uvEbXpe35zRDrlXGxlMMTcq4yB7sSOfYB62bEnoqnRJd
-# 0gRdInlPtyu4cg2zQ6NOPe7KlkI0kL//7hxIqc4wNdL/PVu0x7lH6kEbYcYTQvAc
-# fkzIzki7Hn7iulWi3G22IIbl36C0yOfEmvgUY/jL
+# BgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMDA2MDky
+# MDQxMTFaMCMGCSqGSIb3DQEJBDEWBBR6oB4llI3A4o4ePnvefBLFl6UC/jANBgkq
+# hkiG9w0BAQEFAASCAQAzUNuKQyS/gHBA7e2IoC5l6LcHCL3UWzr/W2sqZ2tfObU0
+# g7lU8l7FzF50SdzojNzI2JiqtHWbbBA6KiW5vw95I6m4+/tGhtOtid68pwzZXvBz
+# ZQkgZBrmI1XFGN+M36ARzOXKMH9OW6dP6VnvfqtBSPrdCyadrZi0OeY4cjgrswZI
+# /6I9G118VP423FJyGoSaxkQJ/0+BsPiHwJwDEs+OaJDxyjNBzXOUDuwLzQCs4Xr3
+# osIgVindF+/IxlOS4ggowQp+fZJuEz2koESg5exufh90RW2AHncHqEe6ISUCz3Ql
+# b4BtcmXMfcdsvsoHmGsmroIQ87vA/Ic23xlEmKec
 # SIG # End signature block
