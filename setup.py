@@ -145,7 +145,7 @@ setup(
     #
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['peppercorn'],  # Optional
+    install_requires=['asyncio','keyring','cryptography','discord.py'],  # Optional
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
@@ -197,8 +197,8 @@ setup(
     # what's used to render the link text on PyPI.
     project_urls={  # Optional
         'Bug Reports': 'https://github.com/mavaddat-javid-education/discordpy/issues',
-        'Funding': 'https://donate.pypi.org',
+        'Funding': 'https://www.patreon.com/mavaddat?fan_landing=true',
         'Say Thanks!': 'https://saythanks.io/to/javid%40mavaddat.ca',
-        'Source': 'https://github.com/mavaddat-javid-education/',
+        'Source': 'https://github.com/mavaddat-javid-education/discordpy',
     },
 )
