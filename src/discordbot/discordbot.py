@@ -94,20 +94,36 @@ def main():
         # to the `channel` worded as a reminder
         await channel.send("Remember, " + "'" + message + "'")
 
-    @bot.event # This is a function decorator to let Python know to call our `on_error` function when client events happen
-    async def on_error(event, *args, * * kwargs): # Here, we intercept errors by the code and dump them into the `modlogs` channel by overriding a built-in discord.py method called `on_error`
-        await bot.get_channel(modlogs).send("🤢") # The bot prefaces error notifications with this sick emoji 
-        await asyncio.sleep(1) # wait a second
-        await bot.get_channel(modlogs).send(event) # Specify the event that caused the error
-        await asyncio.sleep(0.5) # wait half a second
-        await bot.get_channel(modlogs).send(sys.exc_info()) # Dump the error information into the `modlogs` channel
-        await bot.get_channel(modlogs).send("🤮") # The bot concludes error notifications with barf emoji 
+    @bot.event  # This is a function decorator to let Python
+    # know to call our `on_error` function when client events happen
+    # Below, we intercept errors by the code and dump them into
+    # the `modlogs` channel by overriding a built-in discord.py
+    # method called `on_error`
+    async def on_error(event, *args, **kwargs):
+        # The bot prefaces error notifications with sickface emoji
+        await bot.get_channel(modlogs).send("🤢")
+        await asyncio.sleep(1)  # wait a second
+        # Announce the event that caused the error
+        await bot.get_channel(modlogs).send(event)
+        await asyncio.sleep(0.5)  # wait half a second
+        # Dump the error information into the `modlogs` channel
+        await bot.get_channel(modlogs).send(sys.exc_info())
+        # The bot concludes error notifications with barf emoji
+        await bot.get_channel(modlogs).send("🤮")
 
-
-    @bot.event # This is a function decorator to let Python know to call our `on_ready` function when client events happen
-    async def on_ready(): # Here, we announce the presence of our bot locally and remotely by overriding a built-in discord.py method called `on_ready`
-        print('We have logged in as {0.user}'.format(bot)) # This will print to the local terminal that the bot is connected
-        await bot.get_channel(modlogs).send(bot.user.name +' reporting for duty!') # This will send a message to the `modlogs` channel announcing the presence of our bot
+    # This is a function decorator to let Python know
+    # to call our `on_ready` function when client events happen
+    @bot.event
+    # Here, we announce the presence of our bot
+    # locally and remotely by overriding a built-in
+    # discord.py method called `on_ready`
+    async def on_ready():
+        # This will print to the local terminal that the bot is connected
+        print('We have logged in as {0.user}'.format(bot))
+        await bot.get_channel(modlogs).send(
+            bot.user.name + ' reporting for duty!')
+        # This will send a message to the `modlogs` channel
+        # announcing the presence of our bot
 
     @bot.command()
     async def hello(ctx):
