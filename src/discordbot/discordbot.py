@@ -1,6 +1,9 @@
 import re
 import asyncio
 import sys
+import keyring
+import os.path
+from os import path
 # Fernet required for decrypting our `token` and `key`
 from cryptography.fernet import Fernet
 from discord.ext import commands
@@ -140,10 +143,14 @@ def main():
     #  code (below will produce an unhandled `IOError`
     # if `writeToken.py` step is skipped)
     key = open("key", 'rb')  # load the `key` file
-    # read the key into the Fernet cryptography object
-    fernet = Fernet(key.read())
-    token = open("token", 'rb')  # load the encrypted `token` file
-    # read the encrypted contents of the `token` file as binary,
-    # convert them into encrypted UTF8 text, decrypt the UTF8 text
-    # to retrieve the original Discord bot auth token
-    bot.run((fernet.decrypt(token.read())).decode())
+    if path.exists("token"):  # load token from file
+        # read the key into the Fernet cryptography object
+        fernet = Fernet(key.read())
+        token = open("token", 'rb')  # load the encrypted `token` file
+        # read the encrypted contents of the `token` file as binary,
+        # convert them into encrypted UTF8 text, decrypt the UTF8 text
+        # to retrieve the original Discord bot auth token
+        bot.run((fernet.decrypt(token.read())).decode())
+    else:  # load token from key ring
+        # directly loads token into the param for bot run() method
+        bot.run(keyring.get_password("system", (key.read()))
