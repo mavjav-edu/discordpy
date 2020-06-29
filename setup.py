@@ -10,6 +10,7 @@ from setuptools import setup, find_packages
 from os import path
 
 here = path.abspath(path.dirname(__file__))
+issues = 'https://github.com/mavaddat-javid-education/discordpy/issues'
 
 # Get the long description from the README file
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
@@ -145,7 +146,9 @@ setup(
     #
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['asyncio','keyring','cryptography','discord.py'],  # Optional
+    install_requires=[
+        'asyncio', 'keyring', 'cryptography', 'discord.py'
+    ],  # Optional
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
@@ -196,7 +199,7 @@ setup(
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/mavaddat-javid-education/discordpy/issues',
+        'Bug Reports': issues,
         'Funding': 'https://www.patreon.com/mavaddat?fan_landing=true',
         'Say Thanks!': 'https://saythanks.io/to/javid%40mavaddat.ca',
         'Source': 'https://github.com/mavaddat-javid-education/discordpy',
