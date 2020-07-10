@@ -152,5 +152,8 @@ def main():
             # to retrieve the original Discord bot auth token
             bot.run((fernet.decrypt(token.read())).decode())
         else:  # load token from key ring
-            # directly loads token into the param for bot run() method
-            bot.run(keyring.get_password("system", (key.read())))
+            # directly loads token into the bot run() method
+            try:
+                bot.run(keyring.get_password("system", (key.read())))
+            except keyring.errors.PasswordSetError as error:
+                print(error, "\nFailed to retrieve password!")
