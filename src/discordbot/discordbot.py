@@ -139,12 +139,12 @@ def main():
     # TODO:
     # The four steps below require that we copied the bot auth token
     #  and ran the `writeToken.py` script prior to running this bot
-    #  code (below will produce an unhandled `IOError`
+    #  (code below will produce an unhandled `IOError`
     # if `writeToken.py` step is skipped)
     if path.exists("key"):
         key = open("key", 'rb')  # load the `key` file
-        if path.exists("token"):  # load token from file
-            # read the key into the Fernet cryptography object
+        if path.exists("token"):  # load `token` from file
+            # read the `key` into the Fernet cryptography object
             fernet = Fernet(key.read())
             token = open("token", 'rb')  # load the encrypted `token` file
             # read the encrypted contents of the `token` file as binary,
@@ -154,6 +154,7 @@ def main():
         else:  # load token from key ring
             # directly loads token into the bot run() method
             try:
-                bot.run(keyring.get_password("system", (key.read())))
+                bot.run(keyring.get_password("system",
+                str((key.read()).decode("utf-8")))
             except keyring.errors.PasswordSetError as error:
                 print(error, "\nFailed to retrieve password!")

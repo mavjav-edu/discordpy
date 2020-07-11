@@ -68,7 +68,7 @@ try:
 
         # ask the user for the Discord token, then writes the token as password
         # into the keyring with the Fernet key as the username
-        keyring.set_password("system", (key.read()), (
+        keyring.set_password("system", str((key.read()).decode("utf-8")), (
             input("What is the secret?> ")))
         print("Your token has been stored in the file system keyring!")
 
