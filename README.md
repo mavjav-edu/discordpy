@@ -1,5 +1,7 @@
 # Mav Jav Education bot
 
+[![Build Status](https://travis-ci.com/mavaddat-javid-education/discordpy.svg?branch=master)](https://travis-ci.com/mavaddat-javid-education/discordpy)
+
 <a href="https://discord.gg/KzzTBbr" alt="Discord server invite">![Discord server invite](https://discordapp.com/api/guilds/336642139381301249/embed.png)</a>
 <a href="https://pypi.python.org/pypi/discord.py"><object data="https://img.shields.io/pypi/v/discord.py.svg" type="image/svg+xml" alt="PyPI version info" height="20vh" align="initial"><img src="https://img.shields.io/pypi/v/discord.py.svg" alt="PyPI version info" height="20vh" align="initial"></object></a>
    [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/javid@mavaddat.ca)
