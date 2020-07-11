@@ -154,7 +154,9 @@ def main():
         else:  # load token from key ring
             # directly loads token into the bot run() method
             try:
-                bot.run(keyring.get_password("system",
-                str((key.read()).decode("utf-8"))))
+                bot.run(keyring.get_password(
+                    "system",
+                    str((key.read()).decode("utf-8")))
+                )
             except keyring.errors.PasswordSetError as error:
                 print(error, "\nFailed to retrieve password!")
