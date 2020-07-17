@@ -147,11 +147,11 @@ def main():
     #  (code below will produce an unhandled `IOError`
     # if `writeToken.py` step is skipped)
     if path.exists("key"):
-        key = open("key", 'rb')  # load the `key` file
+        keyf = open("key", 'rb')  # load the `key` file
         print("Opened the key file...")
 
-        # overwrite key (file object) with the key (string)
-        key = str((key.read()).decode("utf-8"))
+        key = str((keyf.read()).decode("utf-8"))
+        keyf.close()
 
         if not keyring.get_password("system", key) is None:
             # load token from key ring
