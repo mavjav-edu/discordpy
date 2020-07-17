@@ -136,6 +136,11 @@ def main():
         await ctx.send("I'm going...")
         await bot.logout()  # Bot logs out
 
+    @bot.command()
+    async def go(ctx, *, args):
+        if(args == "away"):  # User put space after '!go'
+            await goaway(ctx)
+
     # TODO:
     # The four steps below require that we copied the bot auth token
     #  and ran the `writeToken.py` script prior to running this bot
@@ -143,20 +148,32 @@ def main():
     # if `writeToken.py` step is skipped)
     if path.exists("key"):
         key = open("key", 'rb')  # load the `key` file
-        if path.exists("token"):  # load `token` from file
+        print("Opened the key file...")
+
+        # overwrite key (file object) with the key (string)
+        key = str((key.read()).decode("utf-8"))
+
+        if not keyring.get_password("system", key) is None:
+            # load token from key ring
+
+            # directly loads token into the bot run() method
+            bot.run(keyring.get_password("system", key))
+        elif (path.exists("token")):
+            # load `token` from file
+
             # read the `key` into the Fernet cryptography object
             fernet = Fernet(key.read())
             token = open("token", 'rb')  # load the encrypted `token` file
+
+            print("Opened Fernet token...")
+
             # read the encrypted contents of the `token` file as binary,
             # convert them into encrypted UTF8 text, decrypt the UTF8 text
             # to retrieve the original Discord bot auth token
             bot.run((fernet.decrypt(token.read())).decode())
-        else:  # load token from key ring
-            # directly loads token into the bot run() method
-            try:
-                bot.run(keyring.get_password(
-                    "system",
-                    str((key.read()).decode("utf-8")))
-                )
-            except keyring.errors.PasswordSetError as error:
-                print(error, "\nFailed to retrieve password!")
+        else:
+            print("Failed to retrieve password!")
+
+
+if __name__ == "__main__":
+    main()
