@@ -39,7 +39,7 @@ To try this, you will need some set up. If necessary, platform-specific instruct
 
 ### Run ▶
 
-To actually get this code running, follow these 10 steps:
+To actually get this code running, follow these 11 steps:
 
 1. Clone [this repository](https://github.com/mavaddat-javid-education/discordpy.git) in VS Code ([how?](https://youtu.be/f3DBSH2VoHQ))
 2. Enter the `discordpy` directory using a shell (how <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location?view=powershell-7"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/windows10.svg" type="image/svg+xml" alt="Windows 10 Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/windows10.svg" alt="Windows 10 Logo" height="12vh" align="initial"></object></a>, <a href="http://linuxcommand.org/lc3_lts0010.php"><object data="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" type="image/svg+xml" alt="Linus logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" alt="Linux logo" height="12vh" align="initial"></object></a>, <a href="https://macpaw.com/how-to/use-terminal-on-mac"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/macos.svg" type="image/svg+xml" alt="macOS Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/macos.svg" alt="macOS Logo" height="12vh" align="initial"></object></a>)
@@ -68,7 +68,7 @@ To actually get this code running, follow these 10 steps:
    source ./venv/Scripts/activate
    ```
 
-5. Get an oauth token from Discord (it will be the 'secret' for `writeToken.py`)
+5. Get an OAuth2 token from Discord (it will be the 'secret' for `writeToken.py`)
    1. Go to the [Discord developers' applications page](https://discord.com/developers/applications/)
    2. Create an application or click the application you created for this bot
    3. Click the 'Bot' tab with puzzle piece <object data="discordPuzzle.svg" type="image/svg+xml" alt="'Bot' tab on Discord developer's application" height="20vh" align="initial"><img src="discordPuzzle.svg" alt="Bot' tab on Discord developer's application" height="20" align="initial"></object> icon <object data="botTab.svg" type="image/svg+xml" alt="Bot tab" height="260vh" align="initial"><img src="botTab.svg" alt="Bot tab" height="260vh" align="initial"></object>
@@ -96,7 +96,9 @@ This repository is a work-in-progress. I still need to add the following to the 
 - [ ] Security principles motivating encryption, least privilege
 - [ ] SVG recording of `bash` and `PowerShell` demonstrating each step
 - [ ] Add functionality of Discord.py
-  - [ ] Connect to MySQL db
+  - [ ] Re-invite students who leave sever
+    - [ ] Re-assign roles
+  - [ ] Connect to `MySQL db`
   - [ ] Welcome message
   - [ ] Moderation
   - [ ] Auto role
@@ -129,9 +131,8 @@ This repository is a work-in-progress. I still need to add the following to the 
     - Fortnite Power Rankings
 - [ ] Multilingual translations
 
-[<b id="f1">1</b>](#a1) To use [Discord](https://en.wikipedia.org/wiki/Discord), students must be *same age or older than* the age of digital consent, which is 13 in Canada and USA. If you are not thirteen years old (13) yet, please seek your guardian's or parents' assistance. Your guardian or parents can sign up for Discord and help you get your bot going.[↩](#a1)
-The purpose of this bot is to motivate kids to learn to code.
+[<a id="f1">\[1\]</a>](#a1) To use [Discord](https://en.wikipedia.org/wiki/Discord), students must be &GreaterEqual; 13, the age of digital consent in Canada and USA. If you are not thirteen years old (13) yet, please seek your guardian's or parents' assistance. Your guardian or parents can sign up for Discord and help you get your bot going.[↩](#a1)
 
-[<b id="f2">2</b>](#a2) My bot is **not** a "public bot" (unlike [top.gg bots](https://top.gg) you might know), so it cannot be added by invitation. <object data="invite.svg" type="image/svg+xml" alt="Normal invitation" height="48vh" align="initial"><img src="invite.svg" alt="Invite button crossed out" caption="There is no invite button to quickly add this bot to your server" height="48vh" align="initial"></object>[↩](#a2)
+[<a id="f2">\[2\]</a>](#a2) The purpose of this bot is to motivate kids to learn to code. <br/> My bot is **not** a "public bot" (unlike [top.gg bots](https://top.gg) you might know), so it cannot be added by invitation. <object data="invite.svg" type="image/svg+xml" alt="Normal invitation" height="48vh" align="initial"><img src="invite.svg" alt="Invite button crossed out" caption="There is no invite button to quickly add this bot to your server" height="48vh" align="initial"></object>[↩](#a2)
 
-[<b id="f3">3</b>](#a3) This step will encrypt the OAuth token so that it can be securely stored locally. The `writeToken.py` script also attempts to append the `.gitignore` manifest so that we do not upload the `token` or `key` file onto our repository. These must be kept secret. Anyone who has the key can decrypt the token, but having the encrypted token will be useless (that is the purpose of encryption). <br/> Ideally, we would not keep the key in the same location as the encrypted file, but our purpose here is to demonstrate the method of encryption. Future releases of this code will use [jaraco/keyring](https://github.com/jaraco/keyring) to store and retrieve the key securely from the system credential manager or keychain.[↩](#a3)
+[<a id="f3">\[3\]</a>](#a3) This step will use [jaraco/keyring](https://github.com/jaraco/keyring) to store and retrieve the key securely from the system credential manager or keychain. You will store the token once and `keyring` retrieves the token securely from then on. <br/> Optionally, you can encrypt the OAuth2 token so that it can be securely stored as a file locally. In the latter case, the `writeToken.py` script also attempts to append the `.gitignore` manifest so that we do not upload the `token` or `key` file onto a repository. The file `key` must be kept secret, but `token` is encrypted safe even if acquired by an adversary. That is, anyone who has the key can decrypt the token, but having the encrypted token will be useless (that is the purpose of encryption). <br/> Notice that **keeping the key in the same location as the encrypted file (in the same file system) is a security risk**, but the purpose of this option to demonstrate the method of file encryption.[↩](#a3)
