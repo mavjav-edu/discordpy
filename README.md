@@ -122,7 +122,7 @@ This repository is a work-in-progress. I still need to add the following to the 
     - Twitch • Links to streams
     - Mixer • Links to streams
     - BandCamp • Links to tracks and albums
-  - [ ] Pull stats from https://tracker.gg/
+  - [ ] Pull stats from <https://tracker.gg/>
     - Apex Legends
     - CSGO
     - Division 2
