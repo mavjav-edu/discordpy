@@ -1,5 +1,8 @@
 include pyproject.toml
 
+# Exclude GitHub pages _config
+exclude _config.yml
+
 # Include the README
 include *.md
 
@@ -13,7 +16,6 @@ recursive-include data *
 include *.gif
 include *.png
 include *.svg
-include LICENCE
 include tox.ini
 recursive-include discordpy *.APACHE
 recursive-include discordpy *.BSD
