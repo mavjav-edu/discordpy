@@ -27,21 +27,28 @@ To try this, you will need some set up. If necessary, platform-specific instruct
 
 ### Prerequisites
 
+The list enumerates system (💻) and epistemic (🎓) requirements to getting this bot running.
+
 - 🎓 [Understand](https://code.visualstudio.com/docs/python/python-tutorial) how to run Python in VS Code,
 - 🎓 Understand Python [virtualenv](https://realpython.com/python-virtual-environments-a-primer/),
 - 🎓 Shell familiarity (<a href="https://www.guru99.com/powershell-tutorial.html"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/windows10.svg" type="image/svg+xml" alt="Windows 10 Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/windows10.svg" alt="Windows 10 Logo" height="12vh" align="initial"></object></a>, <a href="https://www.bash.academy/"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/linux.svg" type="image/svg+xml" alt="Linux logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/linux.svg" alt="Linux logo" height="12vh" align="initial"></object></a>, <a href="https://tidbits.com/2019/12/08/resources-for-adapting-to-zsh-in-catalina/"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/macos.svg" type="image/svg+xml" alt="macOS Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/macos.svg" alt="macOS Logo" height="12vh" align="initial"></object></a>),
-- [<img src="discordpy.svg" alt="Discord.py Logo" height="12vh" align="initial"/> install discord.py](https://pypi.org/project/discord.py/) module,
-- [<img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/vscode.svg" alt="VS Code Logo" height="12vh" align="initial"/> install VS Code](https://code.visualstudio.com
+- 💻 [<img src="discordpy.svg" alt="Discord.py Logo" height="12vh" align="initial"/> install discord.py](https://pypi.org/project/discord.py/) module,
+- 💻 [<img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/vscode.svg" alt="VS Code Logo" height="12vh" align="initial"/> install VS Code](https://code.visualstudio.com
 ),
-- [<img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/git.svg" alt="Git Logo" height="12vh" align="initial"/> Git](https://marketplace.visualstudio.com/items?itemName=donjayamanne.git-extension-pack),
-- [<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="12vh" align="initial"/> Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python),
-- <img src="encryption.svg" alt="Encryption icon" height="12vh" align="initial"/> Fernet [cryptography](https://pypi.org/project/cryptography/) module
+- 💻 [<img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/git.svg" alt="Git Logo" height="12vh" align="initial"/> Git](https://marketplace.visualstudio.com/items?itemName=donjayamanne.git-extension-pack),
+- 💻 [<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="12vh" align="initial"/> Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python),
+- 💻 <img src="encryption.svg" alt="Encryption icon" height="12vh" align="initial"/> Fernet [cryptography](https://pypi.org/project/cryptography/) module
 
 ### Run ▶
 
 To actually get this code running, follow these 11 steps:
 
 1. Clone [this repository](https://github.com/mavaddat-javid-education/discordpy.git) in VS Code ([how?](https://youtu.be/f3DBSH2VoHQ))
+
+```bash
+git clone https://github.com/mavaddat-javid-education/discordpy.git
+```
+
 2. Enter the `discordpy` directory using a shell (how <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location?view=powershell-7"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/windows10.svg" type="image/svg+xml" alt="Windows 10 Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/windows10.svg" alt="Windows 10 Logo" height="12vh" align="initial"></object></a>, <a href="http://linuxcommand.org/lc3_lts0010.php"><object data="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" type="image/svg+xml" alt="Linus logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/brandonmaul/brandonmaul.github.io/dc9ec94fac737539b038ed92b739dc23b6e0a3e0/vendor/fontawesome-free/svgs/brands/linux.svg" alt="Linux logo" height="12vh" align="initial"></object></a>, <a href="https://macpaw.com/how-to/use-terminal-on-mac"><object data="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/macos.svg" type="image/svg+xml" alt="macOS Logo" height="12vh" align="initial"><img src="https://raw.githubusercontent.com/mavaddat-javid-education/images/master/icons/macos.svg" alt="macOS Logo" height="12vh" align="initial"></object></a>)
 3. Create a Python virtual environment here called `venv`
 
@@ -52,8 +59,8 @@ To actually get this code running, follow these 11 steps:
 4. Activate the Python virtual environment `venv`
    ([how macOS/Linux](https://youtu.be/Kg1Yvry_Ydk), [how Windows](https://youtu.be/APOPm01BVrk)),
 
-   ```cmd
-   .\venv\Scripts\activate.bat
+   ```bash
+   source ./venv/Scripts/activate
    ```
 
    or
@@ -64,22 +71,36 @@ To actually get this code running, follow these 11 steps:
 
    or
 
-   ```bash
-   source ./venv/Scripts/activate
+   ```cmd
+   .\venv\Scripts\activate.bat
    ```
 
-5. Get an OAuth2 token from Discord (it will be the 'secret' for `writeToken.py`)
+5. We use `tox-travis` to automatically install project dependencies in the `venv`. ([What is `tox`?](https://pypi.org/project/tox/))
+
+   1. Install `tox-travis`
+
+   ```bash
+   pip install tox-travis
+   ```
+
+   1. Run `tox`
+
+   ```bash
+   tox
+   ```
+
+6. Get an OAuth2 token from Discord (it will be the 'secret' for `writeToken.py`)
    1. Go to the [Discord developers' applications page](https://discord.com/developers/applications/)
    2. Create an application or click the application you created for this bot
    3. Click the 'Bot' tab with puzzle piece <object data="discordPuzzle.svg" type="image/svg+xml" alt="'Bot' tab on Discord developer's application" height="20vh" align="initial"><img src="discordPuzzle.svg" alt="Bot' tab on Discord developer's application" height="20" align="initial"></object> icon <object data="botTab.svg" type="image/svg+xml" alt="Bot tab" height="260vh" align="initial"><img src="botTab.svg" alt="Bot tab" height="260vh" align="initial"></object>
    4. Add a bot to the application (if a bot is not already in the application) <object data="botPage.svg" type="image/svg+xml" alt="Add 'Bot' prompt on Discord developer's application" height="164vh" align="initial"><img src="botPage.svg" alt="Bot' page on Discord developer's application" height="164vh" align="initial"></object> <object data="addBot.svg" type="image/svg+xml" alt="Add 'Bot' prompt on Discord developer's application" width="300vh" align="initial"><img src="addBot.svg" alt="Bot' tab on Discord developer's application" width="300vh" align="initial"></object>
    5. Click 'Copy' under 'TOKEN' <object data="copyToken.svg" type="image/svg+xml" alt="Copy the token" height="280vh" align="initial"><img src="copyToken.svg" alt="Copy the token" height="280vh" align="initial"></object>
-6. Write your token into the keyring or create your Fernet `token` and `key` by pasting the auth token into Python shell running [writeToken.py](writeToken.py) script<sup id="a3">[3](#f3)</sup>
-7. Go to the OAuth2 tab <object data="oauthTab.svg" type="image/svg+xml" alt="OAuth2 tab" height="301vh" align="initial"><img src="oauthTab.svg" alt="OAuth2 tab" height="301vh" align="initial"></object>
-8. Check the box for `bot` role ![check the box for the bot role](botRole.svg)
-9. Check boxes for the permissions `Send Messages` and `Read Message History` to generate a URL inivitation ![Generate invitation URL](urlInvite.svg)
-10. Invite your bot to join your server by copying the URL generated by the permissions calculating tool in step [8](#8). The URL will have the format `https://discord.com/api/oauth2/authorize?client_id=`{CLIENT_ID}`&permissions=`{PERMISSIONS_NUMBER}`&scope=bot` ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear in your server until the last step, [11](#10))
-11. Run the [discordbot](discordbot.py) on your computer inside VS Code ([how?](https://code.visualstudio.com/docs/editor/debugging))
+7. Write your token into the keyring or create your Fernet `token` and `key` by pasting the auth token into Python shell running [writeToken.py](writeToken.py) script<sup id="a3">[3](#f3)</sup>
+8. Go to the OAuth2 tab <object data="oauthTab.svg" type="image/svg+xml" alt="OAuth2 tab" height="301vh" align="initial"><img src="oauthTab.svg" alt="OAuth2 tab" height="301vh" align="initial"></object>
+9.  Check the box for `bot` role ![check the box for the bot role](botRole.svg)
+10. Check boxes for the permissions `Send Messages` and `Read Message History` to generate a URL inivitation ![Generate invitation URL](urlInvite.svg)
+11. Invite your bot to join your server by copying the URL generated by the permissions calculating tool in step [8](#8). The URL will have the format `https://discord.com/api/oauth2/authorize?client_id=`{CLIENT_ID}`&permissions=`{PERMISSIONS_NUMBER}`&scope=bot` ![Invite your bot](DiscordDeveloperPortal.gif) (Your bot won't actually appear in your server until the last step, [12](#12))
+12. Run the [discordbot](discordbot.py) on your computer inside VS Code ([how?](https://code.visualstudio.com/docs/editor/debugging))
 
 That's it! The bot now should be running on your server.
 ![Discord bot triumphant](https://repository-images.githubusercontent.com/249074169/5fd08080-98f9-11ea-84da-b012160872c7)
