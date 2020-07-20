@@ -41,7 +41,7 @@ The list enumerates system (💻) and epistemic (🎓) requirements to getting t
 
 ### Run ▶
 
-To actually get this code running, follow these 11 steps:
+To actually get this code running, follow these 12 steps:
 
 1. Clone [this repository](https://github.com/mavaddat-javid-education/discordpy.git) in VS Code ([how?](https://youtu.be/f3DBSH2VoHQ))
 
