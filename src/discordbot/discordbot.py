@@ -2,6 +2,7 @@ import re
 import asyncio
 import sys
 import keyring
+import traceback
 from os import path
 # Fernet required for decrypting our `token` and `key`
 from cryptography.fernet import Fernet
@@ -109,7 +110,7 @@ def main():
         await bot.get_channel(modlogs).send(event)
         await asyncio.sleep(0.5)  # wait half a second
         # Dump the error information into the `modlogs` channel
-        await bot.get_channel(modlogs).send(sys.exc_info())
+        await bot.get_channel(modlogs).send(traceback.format_exc())
         # The bot concludes error notifications with barf emoji
         await bot.get_channel(modlogs).send("🤮")
 

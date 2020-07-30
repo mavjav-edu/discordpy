@@ -36,14 +36,34 @@ else:
 # create Fernet object to do encryption using our key from above
 frn = Fernet(key)
 
-print("[1] Store token in key ring", "[2] Store token to disk")
+print("[1] Store bot token in key ring", "[2] Store bot token to disk")
 question = "Should we keep token in keyring or store to disk? [1-2]>\n"
 howToStoreToken = int(input(question))
+correctToken = False
 
 while not(howToStoreToken == 1 or howToStoreToken == 2):
     howToStoreToken = int(input(question))  # Keep asking for a 1 or 2
 
-if(howToStoreToken == 1):
+# basic regex pattern checks on presumed token
+correctToken = False
+while not(correctToken):
+    token = input("What's the bot token? > ")
+    clientSecretPat = re.compile("^.{32}$")
+    clientIDPat = re.compile("^\d{18}$")
+    tokenPat = re.compile("^.{59}$")
+    wrong = "The string you've entered looks like the %s.\
+        Are you sure you copied the correct field?"
+    if tokenPat.match(token):
+        print("Token pattern matches! 👍🏽")
+        correctToken = True
+        continue
+    elif clientSecretPat.match(token):
+        print(wrong % "client secret")
+        continue
+    elif clientIDPat.match(token):
+        print(wrong % "client ID")
+        continue
+if howToStoreToken == 1:
     # ask the user for the Discord token, then writes the token as password
     # into the keyring with the Fernet key as the username
     keyring.set_password("system", key, (
@@ -52,7 +72,7 @@ if(howToStoreToken == 1):
         print("Your token has been stored in the file system keyring!")
     else:
         print("Could not store token in the file system keyring!")
-elif(howToStoreToken == 2):
+elif howToStoreToken == 2:
     tokenFilename = input("What should be the token filename?> ")
     while(os.path.isfile('./' + tokenFilename)):
         print(tokenFilename, "already exists.\nChoose another name.")
@@ -68,7 +88,7 @@ elif(howToStoreToken == 2):
 
         # ask the user for the Discord token, then encodes as binary, then
         # encrypts the binary, and then writes binary to 'token' file
-        tokenf.write(frn.encrypt(str.encode(input("What's the secret? "))))
+        tokenf.write(frn.encrypt(str.encode(token)))
 
     except PermissionError as error:
         print(error, "\nCould not write token file. Check permissions.")
@@ -112,3 +132,30 @@ except PermissionError as error:
 finally:
     # Below code will run in any event (whether there is an error or not)
     gitignoref.close()  # close the file `.gitignore`
+
+# Change the mod-logs channel in `discordbot.py`
+question = "What is your `mod-logs` channel ID?"
+modlogsID = input(question)
+channelIDRe = '\d{18}'
+channelIDPat = re.compile("^" + channelIDRe + "$")
+while not(channelIDPat.match(modlogsID)):
+    print("Input ID incorrect. See https://bit.ly/31q1Qlh for instructions.")
+    modlogsID = input(question)
+if os.path.isfile("discordbot.py"):
+    discordbotf = open("discordbot.py", 'r')
+    discordbot = discordbotf.readlines()
+    discordbotf.close()
+
+    modlogsReComp = re.compile("(\s+modlogs = )(" + channelIDRe + ")(.*)")
+
+    for lineNum in range(len(discordbot)):
+        print(lineNum)
+        if re.search(modlogsReComp, discordbot[lineNum]):
+            discordbot[lineNum] = re.sub(
+                modlogsReComp, r"\1 012345678901234567 \3", discordbot[lineNum]
+            )
+            break
+
+    discordbotf = open("discordbot.py", 'w')
+    discordbotf.writelines(discordbot)
+    discordbotf.close()
