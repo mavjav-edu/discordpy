@@ -1,6 +1,5 @@
 import re
 import asyncio
-import sys
 import keyring
 import traceback
 from os import path
